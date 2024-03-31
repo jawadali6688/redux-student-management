@@ -7,19 +7,29 @@ function AddStudent() {
     const [name, setName] = useState('');
     const [reg, setReg] = useState('');
     const [semester, setSemester] = useState('');
+    const [notification, setNotification] = useState(false)
     const dispatch = useDispatch();
 
     const handleStudentForm = (e) => {
         e.preventDefault();
-        dispatch(addStudent({ name, reg, semester }));
-        setName("")
-        setReg("")
-        setSemester("")
+        if (name === "" || reg === "" || semester === "") {
+            setNotification(true);
+        } else {
+            dispatch(addStudent({ name, reg, semester }));
+            setName("");
+            setReg("");
+            setSemester("");
+            setNotification(false);
+        }
     };
+    
 
     return (
-        <div className="w-[90%] md:w-[70%] lg:w-[60%] mx-auto bg-white shadow-md rounded px-4 py-6 md:px-8 md:py-8">
+        <div className="w-[90%] md:w-[70%] lg:w-[60%] mx-auto bg-gray-400 shadow-md rounded px-4 py-6 md:px-8 md:py-8 duration-1000 ">
             <h1 className="text-2xl mb-4 font-bold text-center">Add a Student</h1>
+            {
+                notification? <h1 className='text-lg text-red-800 mb-4 font-bold text-center'>Please Fill the fields</h1>: ""
+            }
             <form onSubmit={handleStudentForm}>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">

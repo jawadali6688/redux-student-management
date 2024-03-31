@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeStudent } from '../features/studentSlice';
+import { editStudent, removeStudent } from '../features/studentSlice';
 function StudentList() {
-    const students = useSelector((state) => state.students);
+    const students = useSelector((state) => state);
+    console.log(students);
     const dispatch = useDispatch()
 
     return (
@@ -26,11 +27,16 @@ function StudentList() {
                                 <td className="border text-center px-4 py-2">{student.name}</td>
                                 <td className="border text-center px-4 py-2">{student.reg}</td>
                                 <td className="border text-center px-4 py-2">{student.semester}</td>
-                                <td className="border text-center px-4 py-2">
+                                <td className="border text-center px-4 py-2 flex items-center gap-1 justify-center">
+                                    
+                                    <button 
+                                    onClick={()=> dispatch(editStudent(student.id))}
+                                    className='bg-green-700 text-white px-4 py-1 rounded-lg hover:bg-green-800 active:bg-green-900'>Edit</button>
                                     <button 
                                     onClick={()=>dispatch(removeStudent(student.id))}
                                     className='bg-red-700 text-white px-4 py-1 rounded-lg hover:bg-red-800 active:bg-red-900'>Delete</button>
                                 </td>
+                                
                             </tr>
                         ))}
                     </tbody>
