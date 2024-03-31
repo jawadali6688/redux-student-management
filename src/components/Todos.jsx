@@ -49,18 +49,18 @@ function Todos() {
             <div className="mb-4 flex justify-end items-center">
                 <button
                     onClick={handleRefresh}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-blue-600 focus:outline-none"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2 mx-auto hover:bg-blue-600 focus:outline-none"
                 >
                     Generate More
                 </button>
-                <label className="mr-2 bg-blue-500 p-2 rounded-md text-white">Items per page:</label>
-                <select
+                {/* <label className="mr-2 bg-blue-500 p-2 rounded-md text-white">Items per page:</label> */}
+                {/* <select
                     className="border border-gray-300 rounded px-3 p-2"
                     value={itemsPerPage}
                     onChange={e => setItemsPerPage(parseInt(e.target.value))}
                 >
                     <option value="5">5</option>
-                </select>
+                </select> */}
             </div>
             {loading ? (
                 <div className="flex justify-center">
